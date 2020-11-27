@@ -1,3 +1,25 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    min-height: 2.8em;
+    padding: 1em;
+    background-color: darkolivegreen;
+}
+
+header h1 {
+    color: beige;
+    font-weight: bold;
+    font-style: italic;
+    text-shadow: 1px 1px 2px black;
+}
+
 body {
     background-color: beige;
+}
+
+body p {
+    margin: 1em;
 }

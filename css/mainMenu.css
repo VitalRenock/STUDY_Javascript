@@ -1,0 +1,35 @@
+.mainMenu {
+    min-height: fit-content;
+    background-color: darkslategray;
+}
+
+.mainMenu ul {
+    display: flex;
+    margin-left: 1em;
+    list-style-type: none;
+}
+
+.mainMenu li {
+    min-height: 1em;
+    margin-right: 2em;
+    background-color: none;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+    text-shadow: black;
+    text-align: center;
+}
+
+.mainMenu li a {
+    background-color: none;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: beige;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mainMenu li a:hover {
+    background-color: beige;
+    color: black;
+}
