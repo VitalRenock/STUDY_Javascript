@@ -23,3 +23,23 @@ body {
 body p {
     margin: 1em;
 }
+
+article {
+    display: block;
+    width: 80%;
+    margin: 2em auto;
+    padding: 0.5em;
+    background-color: lightgray;
+    border-radius: 0.3em;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+code {
+    display: block;
+    background-color: darkslateblue;
+    margin: 0.3em;
+    padding: 0.3em;
+    font-weight: bold;
+    color: orange;
+    border-radius: 0.2em;
+}
