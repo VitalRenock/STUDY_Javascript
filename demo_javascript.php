@@ -19,7 +19,7 @@
 
             // Fonction appartenant à un objet
             GiveYourName: function() {
-                console.log(this.name + " " + this.lastname) // 'this' pour faire réference aux variable de l'objet
+                return this.name + " " + this.lastname // 'this' pour faire réference aux variable de l'objet
             }
         }
 
@@ -130,7 +130,7 @@
         }
         launchCheckWin(joueurs)
         // fonction situé dans un objet
-        myObject.GiveYourName()
+        console.log(myObject.GiveYourName())
         
         // Parsing INT et FLOAT
         console.log(parseInt("36", 10))             // string => int (en base 10)
@@ -150,6 +150,22 @@
         eleves.push("Zoé")                                                          // Ajout d'un élément au tableau 'eleves'
         console.log(eleves)
 
+        // Mot-clé 'this'
+        var personnage = {
+            nom: "Sangoku",
+
+            Transformation: function() {
+                var self = this
+                var cri = "YAAAAA!"
+                var demo = {
+                    Hurler: function() {
+                        console.log(self.nom + " " + cri)
+                    }
+                }
+                demo.Hurler()
+            }
+        }
+        personnage.Transformation()
 
     </script>
 </head>
