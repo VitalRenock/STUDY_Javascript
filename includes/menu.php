@@ -6,7 +6,7 @@
                 <a href="index.php">Accueil</a>
             </li>
             <li>
-                <a href="learning.php">Apprendre</a>
+                <a href="apprendre.php">Apprendre</a>
             </li>
         </ul>
     </nav>

@@ -4,7 +4,7 @@
 
     <?php include("includes/meta&css.php"); ?>
 
-    <title>Learning</title>
+    <title>Apprendre</title>
 </head>
 <body>
 
@@ -14,13 +14,16 @@
     <article>
     <h3>Apprendre l'html</h3>
         <p>
-            <a href="learning_html.php">Learning html</a>
+            <a href="html_bases.php">Les bases de l'html</a>
         </p>
     </article>
     <article>
         <h3>Apprendre le javascript</h3>
         <p>
-            <a href="demo_javascript.php">Demo javascript</a>
+            <a href="javascript_bases.php">Les bases du javascript</a><br>
+            <a href="javascript_window.php">L'objet Window du javascript</a><br>
+            <a href="javascript_document.php">L'objet Document du javascript</a>
+
         </p>
     </article>
 

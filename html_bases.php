@@ -4,7 +4,7 @@
 
     <?php include("includes/meta&css.php"); ?>
 
-    <title>Html</title>
+    <title>Les bases de l'html</title>
 </head>
 <body>
 

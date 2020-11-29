@@ -5,3 +5,6 @@
 <!-- CSS -->
 <link href="/css/main.css" rel="stylesheet">
 <link href="/css/mainMenu.css" rel="stylesheet">
+
+<!-- Favicon -->
+<link rel="icon" href="/img/favicon.ico">
