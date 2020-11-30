@@ -8,25 +8,34 @@
     <link rel="icon" href="/img/favicon.ico">
 
     <style>
-        .testRed {
-            color: red;
+        body {
+            background-color: grey;
         }
 
-        .testBlue {
+        .red {
+            color: red;
+            transition-duration: 0.5s;
+        }
+
+        .blue {
             color: blue;
+            transition-duration: 0.5s;
+        }
+
+        .green {
+            color: green;
+            transition-duration: 0.5s;
         }
     </style>
     
     <title>L'objet Document du javascript</title>
 </head>
 <body>
-    <div id="demo">
-        <p class="paragraphe">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam repellat numquam dolorem, quisquam maxime nostrum at voluptates et dolores sint ad, ipsum est non autem odit. Sint ut esse quam.
-        </p>
-    </div>
+    <p class="demo">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam repellat numquam dolorem, quisquam maxime nostrum at voluptates et dolores sint ad, ipsum est non autem odit. Sint ut esse quam.
+    </p>
     <br>
-    <p class="paragraphe2">
+    <p class="demo">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error doloremque ad rerum deleniti similique? Beatae, veniam veritatis! Laborum aliquam illo dolore, earum, voluptatum aperiam, sunt libero officiis unde vero numquam.
     </p>
 

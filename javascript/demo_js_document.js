@@ -1,48 +1,68 @@
 (function() {
 
-    // Récupérer un élément de la page html par son ID
-    var id_demo = document.getElementById("demo")
-    console.log(id_demo)
+    // Pour sélectionner un élément
+    var body = document.body                                // Récupère l'élément body
+    var idDemo = document.getElementById('demo')            // Sélectionne l'élément avec l'id demo
+    var selecteurCssDemo = document.querySelector('.demo')  // Sélectionne le premier élément correspondant au sélecteur CSS
 
-    // Récuperer DES éléments de la page par leur CLASS
-    var class_paragraphe = document.getElementsByClassName("paragraphe")
-    console.log(class_paragraphe)
+    // Pour sélectionner plusieurs éléments
+    var classDemo = document.getElementsByClassName('demo') // Sélectionne les éléments avec la class démo
+    var tagDemo = document.getElementsByTagName('p')        // Sélectionne les éléments avec le tag '<p>'
+    var elements = document.querySelectorAll('.demo')       // Sélectionne les éléments correspondant au sélecteur CSS
 
-    // Récuperer un élément avec QuerySelector
-    var class_paragraphe2 = document.querySelector(".paragraphe2")
-
-    // Ajout d'une classe CSS à un élément HTML
-    class_paragraphe2.classList.add("testRed")
-
-    // Fun...
-    // ChangeColor = function() {
-    //     var random = Math.round(Math.random())
-    //     var now = new Date()
-    //     console.log("ChangeColor() = " + random + " / Time = " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds())
-    //     if (random == 0) {
-    //         try {
-    //             class_paragraphe2.classList.remove("testRed")
-    //         }
-    //         finally {
-    //             class_paragraphe2.classList.add("testBlue")
-    //         }
-    //     }
-    //     else {
-    //         try {
-    //             class_paragraphe2.classList.remove("testBlue")
-    //         }
-    //         finally {
-    //             class_paragraphe2.classList.add("testRed")
-    //         }
-    //     }
-    // }
-    // window.setInterval(ChangeColor, 3000)
-
-    RandomColor = function() {
-        var random = Math.round(Math.random() * 255)
-        var now = new Date()
-        console.log("RandomColor() = " + random + " / Time = " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds())
+    // Smart functions
+    function ChangeText(elements, newText) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].innerHTML = newText
+        }
     }
-    window.setInterval(RandomColor, 300)
+    
+    function ToggleCSS(elements, CssClass) {
+        for (var i = 0; i < elements.length; i++) {
+            elements[i].classList.toggle(CssClass)
+        }
+    }
+    
+    function SwitchStyleCSS(firstCssClass, secondCssClass) {
+        var random = Math.round(Math.random())
+        if (random == 0) {
+            try { classDemo[0].classList.remove(firstCssClass) }
+            finally { classDemo[0].classList.add(secondCssClass) }
+        }
+        else {
+            try { classDemo[0].classList.remove(secondCssClass) }
+            finally { classDemo[0].classList.add(firstCssClass) }
+        }
+    }
+    
+    function SetRandomColor(elements) {        
+        for (var i = 0; i < elements.length; ++i) {
+            var element = elements[i]                           // objet de type Element
+            element.style.color = GiveMeRandomColor()           // Ajoute du CSS dans la balise de l'élément
+        }
+    }
+    
+    function GiveMeRandomColor() {
+        return "rgb(" + GiveMeRandomInt(0, 255) + ", " + GiveMeRandomInt(0, 255) + ", " + GiveMeRandomInt(0, 255) + ")"
+    }
+    
+    function GiveMeRandomColorNB() {
+        var randColor = GiveMeRandomInt(0, 255)
+        return "rgb(" + randColor + ", " + randColor + ", " + randColor + ")"
+    }
+    
+    function GiveMeRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min +1)) + min;
+    }
+    
+    function GiveMeTime() {
+        var now = new Date()
+        return now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds()
+    }
+    
+    // For testing
+    window.setInterval(SetRandomColor, 2000, classDemo)
 
 })()
