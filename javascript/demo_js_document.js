@@ -10,6 +10,29 @@
     var tagDemo = document.getElementsByTagName('p')        // Sélectionne les éléments avec le tag '<p>'
     var elements = document.querySelectorAll('.demo')       // Sélectionne les éléments correspondant au sélecteur CSS
 
+    // À RÉVISER: Accéder aux divers éléments parent/enfants, ect
+        // element[0].getAttribute('attribut')                     // Permet de récupérer la valeur d'un attribut
+        // element[0].style                                        // Permet de récupérer les styles associés à l'élément
+        // element[0].classList                                    // Permet de récupérer la liste des classes associées à un élément 
+        // element[0].offsetHeight                                 // Donne la hauteur réel de l'élément
+
+        // element[0].setAttribute('href', 'http://grafikart.fr')
+        // element[0].style.fontSize = '24px'
+        // element[0].classList.add('red')                         // Ajoute une class à l'élément
+
+        // element[0].childNodes                                   // Renvoie tous les noeuds enfant (même les noeuds textes)
+        // element[0].children                                     // Renvoie tous les noeuds éléments
+        // element[0].firstChild                                   // Récupère le premier enfant 
+        // element[0].firstElementChild                            // Récupère le premier enfant de type element 
+        // element[0].previousElementSibling
+        // element[0].nextElementSibling
+
+        // element[0].appendChild(enfant)                          // ajoute un élément à un autre
+        // element[0].removeChild(enfant)                          // supprime un enfant 
+        // element[0].textContent = 'Salut'                        // Change la valeur du noeud texte 
+        // element[0].innerHTML                                    // Renvoie le contenu HTML de l'élément 
+        // parentElement.insertBefore(nouvelElement, refElement)
+
     // Smart functions
     function ChangeText(elements, newText) {
         for (var i = 0; i < elements.length; i++) {
