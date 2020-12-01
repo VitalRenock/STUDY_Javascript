@@ -8,6 +8,9 @@
             <li>
                 <a href="apprendre.php">Apprendre</a>
             </li>
+            <li>
+                <a href="/phpmyadmin">PhpMyAdmin</a>
+            </li>
         </ul>
     </nav>
 </div>
