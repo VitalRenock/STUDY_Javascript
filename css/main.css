@@ -6,32 +6,41 @@
 header {
     min-height: 2.8em;
     padding: 1em;
-    background-color: darkolivegreen;
+    background-color: #c12de0;
 }
 
 header h1 {
-    color: beige;
+    color: #e0c12d;
     font-weight: bold;
     font-style: italic;
     text-shadow: 1px 1px 2px black;
 }
 
 body {
-    background-color: beige;
+    background-color: #e02da5;
 }
 
 body p {
     margin: 1em;
 }
 
+table, td, th {
+    border: thin solid #6495ed;
+    width: 50%;
+}
+
 article {
     display: block;
     width: 80%;
     margin: 2em auto;
-    padding: 0.5em;
+    padding: 1em;
     background-color: lightgray;
     border-radius: 0.3em;
     box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+article h1 {
+    margin-bottom: 1em;
 }
 
 code {

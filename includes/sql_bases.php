@@ -1,4 +1,5 @@
 <?php
+
 // $sqlRequest = "UPDATE style_css SET css_value = 'orange' WHERE css_value = 'green'";
 // $sqlRequest = "SELECT DATABASE()";
 
@@ -136,4 +137,5 @@
                     echo "<p>" . $row["nom"] . " - " . $row["console"] . "</p>";    
                 }
             }
+            
 ?>

@@ -9,6 +9,9 @@
                 <a href="apprendre.php">Apprendre</a>
             </li>
             <li>
+                <a href="management_db.php">Management DB</a>
+            </li>
+            <li>
                 <a href="/phpmyadmin">PhpMyAdmin</a>
             </li>
         </ul>
