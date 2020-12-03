@@ -1,5 +1,7 @@
 <!-- TO DO: Placer des Try, Catch -->
 <?php
+    $myDatabase = ConnectPDOtoDB();
+
      function ConnectSQLItoDB(){
         $host = '127.0.0.1';
         $user = 'root';
@@ -13,6 +15,7 @@
         }
         return $DBtoSQLI;
     }
+
     function ConnectPDOtoDB() {
         // Détails: 
         // Débugger une erreur de requête SQL: "array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)"

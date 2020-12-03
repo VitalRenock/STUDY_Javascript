@@ -1,5 +1,5 @@
 <?php
-    include("includes/connect_db.php");
+    include("../includes/connect_db.php");
 
     DBInsertInto();
 
@@ -13,6 +13,6 @@
         $result->execute(array($_POST['sel_CSS'], $_POST['pro_CSS'], $_POST['val_CSS']));
         
         // Redirection du visiteur vers la page du minichat
-        header('Location: management_db.php');
+        header('Location: ../management_db.php');
     }
 ?>

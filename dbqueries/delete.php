@@ -1,5 +1,5 @@
 <?php
-    include("includes/connect_db.php");
+    include("../includes/connect_db.php");
 
     DBDelete();
 
@@ -18,6 +18,6 @@
                 ));
         
         // Redirection du visiteur vers la page du minichat
-        header('Location: management_db.php');
+        header('Location: ../management_db.php');
     }
 ?>
