@@ -11,9 +11,9 @@
 
     <body>
         
-        <?php include("includes/connect_db.php"); ?>
-        <?php include("includes/header.php"); ?>
-        <?php include("includes/menu.php"); ?>
+        <?php include("includes/php/connect_db.php"); ?>
+        <?php include("includes/php/header.php"); ?>
+        <?php include("includes/php/menu.php"); ?>
 
         <article>
             <h3>Apprendre l'html</h3>

@@ -14,6 +14,23 @@
         return $html;
     }
 
+    function DisplayArticleOfDB($result) {
+        $html = "";
+        while($row = $result->fetch()) {
+            $html .= "<article>";
+            for ($i = 0; $i < count($row)/2; $i++) {
+                if ($i == 0)
+                    $html .= "<h1>".$row[$i]."</h1>";
+                else if ($i == 1)
+                    $html .= "<p>".$row[$i]."</p>";
+                else if ($i == 2)
+                    $html .= "<pre><code class=\"html\"><p id=\"monArticle\">".$row[$i]."</code></pre>";
+            }
+            $html .= "</article>";
+        }
+        return $html;
+    }
+
     /** Génere un formulaire */
     function GenerateForm($action) {
         $html = "<form action = '".$action."' method = 'post'>";

@@ -11,16 +11,15 @@
 
     <body>
         
-        <?php include("includes/connect_db.php"); ?>
-        <?php include("includes/header.php"); ?>
-        <?php include("includes/menu.php"); ?>
-        <?php include("includes/custom_func.php"); ?>
-        <script type="text/javascript" src='/javascript/custom_func.js'></script>
+        <?php include("includes/php/connect_db.php"); ?>
+        <?php include("includes/php/header.php"); ?>
+        <?php include("includes/php/menu.php"); ?>
+        <?php include("includes/php/custom_func.php"); ?>
+        <script type="text/javascript" src='includes/js/custom_func.js'></script>
 
         <article>
             <h1>Affichage de la table</h1>
             <?php
-                $myDatabase = ConnectPDOtoDB();
                 $sqlRequest = 'SELECT css_selector, css_property, css_value FROM style_css';
                 $result = $myDatabase->query($sqlRequest);
                 echo DisplayTableOfDB($result); 
