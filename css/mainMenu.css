@@ -1,6 +1,6 @@
 .mainMenu {
     min-height: fit-content;
-    background-color: #e0682d;
+    background-color: #692e1e;
 }
 
 .mainMenu ul {
@@ -23,13 +23,14 @@
     background-color: none;
     padding-left: 1em;
     padding-right: 1em;
-    color: #e0c12d;
+    color: #7d7573;
     font-size: large;
     font-weight: bold;
     text-decoration: none;
+    /* text-shadow: 1px 1px 2px black; */
 }
 
 .mainMenu li a:hover {
-    background-color: #e0c12d;
-    color: black;
+    background-color: #7d7573;
+    color: #692e1e;
 }
