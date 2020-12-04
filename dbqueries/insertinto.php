@@ -1,5 +1,5 @@
 <?php
-    include("../includes/connect_db.php");
+    include("../includes/php/connect_db.php");
 
     DBInsertInto();
 

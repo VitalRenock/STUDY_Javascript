@@ -36,13 +36,13 @@
         $html = "<form action = '".$action."' method = 'post'>";
 
         $html .= "<label for='sel_CSS'>Sélecteur CSS:</label>";
-        $html .= "<input type='text' id='sel_CSS' name='sel_CSS'><br><br>";
+        $html .= "<input type='text' id='sel_CSS' name='sel_CSS' value='body'><br><br>";
 
         $html .= "<label for='pro_CSS'>Propriété CSS:</label>";
-        $html .= "<input type='text' id='pro_CSS' name='pro_CSS'><br><br>";
+        $html .= "<input type='text' id='pro_CSS' name='pro_CSS' value='background-color'><br><br>";
 
         $html .= "<label for='val_CSS'>Valeur CSS:</label>";
-        $html .= "<input type='text' id='val_CSS' name='val_CSS'><br><br>";
+        $html .= "<input type='color' id='val_CSS' name='val_CSS'><br><br>";
 
         $html .= "<input type='submit' value='Envoyer'>";
 

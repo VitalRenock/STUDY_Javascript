@@ -18,3 +18,20 @@ function ConvertSTRINGtoHTML(htmlString) {
 function ChangeBackgroundColor(newColor) {
     document.body.style.backgroundColor = newColor;
 }
+
+function Poubelle() {
+    var testStr = 
+    "<!DOCTYPE html>\r\
+    <html lang=\"en\">\r\
+    <head>\r\
+        <meta charset=\"UTF-8\">\r\
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\
+        <title>Document</title>\r\
+    </head>\r\
+    <body>\r\
+        \r\
+    </body>\r\
+    </html>";
+    
+    ReplaceInnerHTMLbyID('monArticle', ConvertSTRINGtoHTML(testStr));
+}

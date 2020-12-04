@@ -12,10 +12,10 @@
     <body>
         
         <?php include("includes/php/connect_db.php"); ?>
-        <?php include("includes/php/header.php"); ?>
-        <?php include("includes/php/menu.php"); ?>
         <?php include("includes/php/custom_func.php"); ?>
         <script type="text/javascript" src='includes/js/custom_func.js'></script>
+        <?php include("includes/php/header.php"); ?>
+        <?php include("includes/php/menu.php"); ?>
 
         <article>
             <h1>Affichage de la table</h1>
