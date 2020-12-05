@@ -1,3 +1,28 @@
+// Les égalités
+    // L'égalité simple:
+        // L'égalité simple vérifie la valeur, mais pas le type. Donc l'instruction suivante renvoie la valeur 'true': 
+        // 5 == "5"
+
+    // L'égalité stricte:
+        // L'égalité stricte vérifie à la fois la valeur et le type. Donc l'instruction suivante renvoie 'false',
+        // car on compare un  number  à un  string.
+        // 5 === "5"
+
+    // De même, il y a deux opérateurs d'inégalité  !=  et  !==, avec la même distinction.
+
+
+// Les portées
+    // Les variables privées (portée du bloc):
+        // En JavaScript, les variables créées par  let  ou  const  ne peuvent être vues ou utilisées qu'à l'intérieur du bloc de code dans lequel elles sont déclarées.
+        let variablePrive = 5;
+        const constantePrive = 5;
+    // Les variables public (global):
+        // la portée 'var' à un scope de fonction, elle est déclarée dès le début du script mais assigné seuleument à la l'execution, voire l'exemple pour mieux comprendre:
+            // console.log(x); // résultat = undefined (existe mais pas de type et valeur)
+            // var x=5;
+            // console.log(x); // résultat = 5
+        var variablePublic = 5;
+
 // Déclarer une variable
     var demo = 'Bonjour Renock'
 
@@ -16,7 +41,12 @@
     }
 
 // Déclarer un tableau
-    var eleves = ['Marc', 'Sandrine', 'Olivier', 'Sarah']
+    var guests = [];
+    var eleves = ['Marc', 'Sandrine', 'Olivier', 'Sarah'];
+    guests.push("Tao Perkington");                      // ajoute "Tao Perkington" à la fin de notre tableau guests
+    guests.unshift("Tao Perkington");                   // "Tao Perkington" est ajouté au début du tableau guests
+    guests.pop();                                       // supprimer le dernier élément du tableau
+    let howManyGuests = guests.length;                  // Nombre d'élément du tableau
 
 // Déclarer un tableau d'objets
     var joueurs = [
@@ -41,6 +71,11 @@
             score: 72
         }
     ]
+// Déclarer un ensemble
+    const set1 = new Set([1, 2, 3, 4, 5]);              // continuer à apprendre
+
+// Déclarer un dictionnaire
+    new Map([iterable])                                 // continuer à apprendre
 
 // Afficher un message dans la console (du navigateur)
     console.log(demo)
@@ -97,6 +132,40 @@
 // Boucle FOR
     for (var j = 0; j < eleves.length; j++)
         console.log("L'élève " + j + " s'appelle " + eleves[j])
+
+// Boucle FOR IN (écriture simplifiée de la boucle FOR)
+    const passengers = [
+        "Will Alexander",
+        "Sarah Kate'",
+        "Audrey Simon",
+        "Tao Perkington"
+    ]
+    for (let i in passengers) {
+        console.log("Embarquement du passager " + passengers[i]);
+    }
+
+// Boucle FOR OF (pour avoir l'objet directement sans avoir besoin d'une notion d'index 'i')
+const passengers = [
+    {
+        name: "Will Alexander",
+        ticketNumber: 209542
+    },
+    {
+        name: "Sarah Kate",
+        ticketNumber: 169336
+    },
+    {
+        name: "Audrey Simon",
+        ticketNumber: 779042
+    },
+    {
+        name: "Tao Perkington",
+        ticketNumber: 703911
+    }
+]
+for (let passenger of passengers) {
+    console.log('Embarquement du passager ' + passenger.name + ' avec le ticket numéro ' + passenger.ticketNumber);
+}
 
 // Les fonctions
     // fonction utilisable AVANT ou APRES sa déclaration (instancié au chargement du script)

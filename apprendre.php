@@ -29,7 +29,9 @@
             <p>
                 <a href="javascript_bases.php">Les bases du javascript</a><br>
                 <a href="javascript_window.php">L'objet Window du javascript</a><br>
-                <a href="javascript_document.php">L'objet Document du javascript</a>
+                <a href="javascript_document.php">L'objet Document du javascript</a><br>
+                <a href="javascript_event.php">Les events dans javascript</a><br>
+                <a href="javascript_ajax.php">Ajax pour javascript</a><br>
             </p>
         </article>
 

@@ -17,7 +17,7 @@
                 'css_value' => $_POST['val_CSS']
                 ));
         
-        // Redirection du visiteur vers la page du minichat
+        // Redirection du visiteur vers la page management.php
         header('Location: ../management_db.php');
     }
 ?>

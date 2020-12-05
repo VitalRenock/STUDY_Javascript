@@ -12,7 +12,7 @@
         $result = $myDatabase->prepare($sqlRequest);
         $result->execute(array($_POST['sel_CSS'], $_POST['pro_CSS'], $_POST['val_CSS']));
         
-        // Redirection du visiteur vers la page du minichat
+        // Redirection du visiteur vers la page management.php
         header('Location: ../management_db.php');
     }
 ?>
