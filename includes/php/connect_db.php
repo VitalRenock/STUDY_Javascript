@@ -1,5 +1,5 @@
-<!-- TO DO: Placer des Try, Catch -->
 <?php
+    // TO DO: Placer des Try, Catch
     $myDatabase = ConnectPDOtoDB();
 
      function ConnectSQLItoDB(){

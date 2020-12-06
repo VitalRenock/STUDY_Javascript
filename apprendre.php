@@ -25,6 +25,14 @@
         </article>
 
         <article>
+            <h3>Apprendre le PHP</h3>
+            <p>
+                <a href="exemple_formulaire.php">Exemple de formulaire</a><br>
+                <a href="exemple_articledisplay.php">Exemple d'affichage d'articles</a>
+            </p>
+        </article>
+
+        <article>
             <h3>Apprendre le javascript</h3>
             <p>
                 <a href="javascript_bases.php">Les bases du javascript</a><br>

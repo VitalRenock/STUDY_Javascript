@@ -12,6 +12,9 @@
                 <a href="management_db.php">Management DB</a>
             </li>
             <li>
+                <a href="dbmanager.php">DB Manager</a>
+            </li>
+            <li>
                 <a href="page_test.php">Page de test</a>
             </li>
             <li>
