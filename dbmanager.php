@@ -17,21 +17,35 @@
         <?php include("includes/php/header.php"); ?>
         <?php include("includes/php/menu.php"); ?>
 
-        <!-- INTERFACE -->
-        <button name="button_red" type="button" id="button_red">Red</button>
+        <article id="display_tables"></article>
 
-        <!-- <article>
-            <h1>Formulaire INSERT INTO</h1>
-            <form action = 'dbqueries/insertinto.php' method = 'post'>
-                <label for='sel_CSS'>Sélecteur CSS:</label>
-                <input type='text' id='sel_CSS' name='sel_CSS' value='body'><br><br>
-                <label for='pro_CSS'>Propriété CSS:</label>
-                <input type='text' id='pro_CSS' name='pro_CSS' value='background-color'><br><br>
-                <label for='val_CSS'>Valeur CSS:</label>
-                <input type='color' id='val_CSS' name='val_CSS'><br><br>
-                <input type='submit' value='Envoyer'>
-            </form>
-        </article> -->
+        <!-- Interface -->
+        <article>
+            <p class="myParaf1">
+                <button name="button_select" type="button" id="button_select">SELECT</button>
+                <button name="button_insert_into" type="button" id="button_insertinto">INSERT INTO</button>
+                <button name="button_delete" type="button" id="button_delete">DELETE</button>
+                <button name="button_from" type="button" id="button_from">FROM</button>
+                <button name="button_asterisk" type="button" id="button_asterisk">*</button>
+            </p>
+            <p class="myParaf1">
+                <input  name="input_user" type="text" id="input_user">
+                <button name="button_add" type="button" id="button_add">Add</button>
+            </p>
+            <p class="myParaf1">
+                <strong>Requête en préparation:</strong>
+                <br>
+                <strong id="display_request"></strong>
+                <br>
+                <button name="button_reset" type="button" id="button_reset">Reset</button>
+                <button name="button_send" type="button" id="button_send">Send</button>
+            </p>
+            <p class="myParaf1" id="display_request_data"></p>
+
+        </article>
+
+        <!-- Affichage du résultat -->
+        <article id="display_result"></article>
         
         <script type="text/javascript" src="javascript/dbmanager.js"></script>
 

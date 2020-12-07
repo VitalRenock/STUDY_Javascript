@@ -1,0 +1,7 @@
+.myParaf1 {
+    display: block;
+    background-color: grey;
+    padding: 1%;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
+}

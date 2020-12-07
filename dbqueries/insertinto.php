@@ -6,7 +6,7 @@
     function DBInsertInto() {
         // Connexion à la DB
         $myDatabase = ConnectPDOtoDB();
-        
+
         // Préparation et envoi de la requête
         $sqlRequest = 'INSERT INTO style_css (css_selector, css_property, css_value) VALUES(?, ?, ?)';
         $result = $myDatabase->prepare($sqlRequest);

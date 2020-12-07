@@ -25,8 +25,9 @@ body p {
 }
 
 table, td, th {
+    background-color: beige;
     border: thin solid #6495ed;
-    width: 50%;
+    width: auto;
 }
 
 article {
