@@ -11,13 +11,18 @@
 
     <body>
 
-        <?php include("includes/php/connect_db.php"); ?>
-        <?php include("includes/php/custom_func.php"); ?>
-        <script type="text/javascript" src='includes/js/custom_func.js'></script>
-        <?php include("includes/php/header.php"); ?>
-        <?php include("includes/php/menu.php"); ?>
+        <?php include("scripts/php/connect_db.php"); ?>
+        <?php include("scripts/php/custom_func.php"); ?>
+
+        <?php include("includes/header.php"); ?>
+        <?php include("includes/menu.php"); ?>
 
 
+
+        <script type="text/javascript" src='scripts/js/custom_func.js'></script>
+        
+        <?php include("includes/footer.php"); ?>
 
     </body>
+
 </html>

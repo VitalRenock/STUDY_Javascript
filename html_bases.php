@@ -11,6 +11,8 @@
     
     <body>
 
+        <?php include("scripts/php/connect_db.php"); ?>
+
         <?php include("includes/header.php"); ?>
         <?php include("includes/menu.php"); ?>
 
@@ -65,6 +67,10 @@
         <article>
             <h3>Type d'affichage d'un élément et disposition de ses éléments enfants</h3>
         </article>
+
+        <script type="text/javascript" src='scripts/js/custom_func.js'></script>
+        
+        <?php include("includes/footer.php"); ?>
         
     </body>
 

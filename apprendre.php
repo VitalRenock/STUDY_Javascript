@@ -11,11 +11,11 @@
 
     <body>
         
-        <?php include("includes/php/connect_db.php"); ?>
-        <?php include("includes/php/custom_func.php"); ?>
-        <script type="text/javascript" src='includes/js/custom_func.js'></script>
-        <?php include("includes/php/header.php"); ?>
-        <?php include("includes/php/menu.php"); ?>
+        <?php include("scripts/php/connect_db.php"); ?>
+        <?php include("scripts/php/custom_func.php"); ?>
+
+        <?php include("includes/header.php"); ?>
+        <?php include("includes/menu.php"); ?>
 
         <article>
             <h3>Apprendre l'html</h3>
@@ -28,7 +28,6 @@
             <h3>Apprendre le PHP</h3>
             <p>
                 <a href="exemple_formulaire.php">Exemple de formulaire</a><br>
-                <a href="exemple_articledisplay.php">Exemple d'affichage d'articles</a>
             </p>
         </article>
 
@@ -39,9 +38,12 @@
                 <a href="javascript_window.php">L'objet Window du javascript</a><br>
                 <a href="javascript_document.php">L'objet Document du javascript</a><br>
                 <a href="javascript_event.php">Les events dans javascript</a><br>
-                <a href="javascript_ajax.php">Ajax pour javascript</a><br>
             </p>
         </article>
+
+        <script type="text/javascript" src='scripts/js/custom_func.js'></script>
+        
+        <?php include("includes/footer.php"); ?>
 
     </body>
 

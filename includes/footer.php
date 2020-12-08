@@ -1,6 +1,4 @@
-<header>
-    
-    <h1>Vitalrenock website</h1>
+<footer>
 
     <!-- 1) Requête pour récupérer la couleur de fond du site dans la DB -->
     <?php
@@ -16,5 +14,5 @@
     <script type="text/javascript">
         ChangeBackgroundColor("<?php echo $value; ?>");
     </script>
-
-</header>
+    
+</footer>

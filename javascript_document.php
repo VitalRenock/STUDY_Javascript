@@ -3,11 +3,7 @@
 
     <head>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Favicon -->
-        <link rel="icon" href="/img/favicon.ico">
+        <?php include("includes/head.php"); ?>
 
         <style>
             body {
@@ -36,6 +32,12 @@
 
     <body>
 
+        <?php include("scripts/php/connect_db.php"); ?>
+        <?php include("scripts/php/custom_func.php"); ?>
+
+        <?php include("includes/header.php"); ?>
+        <?php include("includes/menu.php"); ?>
+
         <p class="demo">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam repellat numquam dolorem, quisquam maxime nostrum at voluptates et dolores sint ad, ipsum est non autem odit. Sint ut esse quam.
         </p>
@@ -45,7 +47,11 @@
         </p>
 
         <!-- Script -->
-        <script type="text/javascript" src="/javascript/demo_js_document.js"></script>
+        <script type="text/javascript" src="scripts/js/demo_js_document.js"></script>
+
+        <script type="text/javascript" src='scripts/js/custom_func.js'></script>
+        
+        <?php include("includes/footer.php"); ?>
 
     </body>
     

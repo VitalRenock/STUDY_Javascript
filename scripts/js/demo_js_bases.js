@@ -75,7 +75,7 @@
     const set1 = new Set([1, 2, 3, 4, 5]);              // continuer à apprendre
 
 // Déclarer un dictionnaire
-    new Map([iterable])                                 // continuer à apprendre
+    // new Map([iterable])                                 // continuer à apprendre
 
 // Afficher un message dans la console (du navigateur)
     console.log(demo)
@@ -145,27 +145,27 @@
     }
 
 // Boucle FOR OF (pour avoir l'objet directement sans avoir besoin d'une notion d'index 'i')
-const passengers = [
-    {
-        name: "Will Alexander",
-        ticketNumber: 209542
-    },
-    {
-        name: "Sarah Kate",
-        ticketNumber: 169336
-    },
-    {
-        name: "Audrey Simon",
-        ticketNumber: 779042
-    },
-    {
-        name: "Tao Perkington",
-        ticketNumber: 703911
+    const lecteurs = [
+        {
+            name: "Will Alexander",
+            ticketNumber: 209542
+        },
+        {
+            name: "Sarah Kate",
+            ticketNumber: 169336
+        },
+        {
+            name: "Audrey Simon",
+            ticketNumber: 779042
+        },
+        {
+            name: "Tao Perkington",
+            ticketNumber: 703911
+        }
+    ]
+    for (let passenger of lecteurs) {
+        console.log('Embarquement du passager ' + passenger.name + ' avec le ticket numéro ' + passenger.ticketNumber);
     }
-]
-for (let passenger of passengers) {
-    console.log('Embarquement du passager ' + passenger.name + ' avec le ticket numéro ' + passenger.ticketNumber);
-}
 
 // Les fonctions
     // fonction utilisable AVANT ou APRES sa déclaration (instancié au chargement du script)

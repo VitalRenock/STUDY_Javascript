@@ -6,10 +6,10 @@
                 <a href="index.php">Accueil</a>
             </li>
             <li>
-                <a href="apprendre.php">Apprendre</a>
+                <a href="articles.php">Articles</a>
             </li>
             <li>
-                <a href="management_db.php">Management DB</a>
+                <a href="apprendre.php">Apprendre</a>
             </li>
             <li>
                 <a href="dbmanager.php">DB Manager</a>

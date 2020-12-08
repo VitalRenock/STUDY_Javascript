@@ -5,6 +5,8 @@
 
         <?php include("includes/head.php"); ?>
         
+        <title>Articles</title>
+
     </head>
 
     <body>
@@ -14,14 +16,21 @@
 
         <?php include("includes/header.php"); ?>
         <?php include("includes/menu.php"); ?>
+        
 
-        <!-- Intégration de highlight.js -->
+        <?php 
+            $sqlRequest = 'SELECT titre, article, code FROM articles';
+            $result = $myDatabase->query($sqlRequest);
+            echo DisplayArticleOfDB($result);
+        ?>
+
         <article>
-            <pre>
-                <code class="html">
-                    <p id="monArticle">Mon futur code HTML mise en forme.</p>
-                </code>
-            </pre>
+            <h1>Affichage de la table</h1>
+            <?php
+                $sqlRequest = 'SELECT titre, article, code FROM articles';
+                $result = $myDatabase->query($sqlRequest);
+                echo DisplayTableOfDB($result); 
+            ?>
         </article>
 
         <script type="text/javascript" src='scripts/js/custom_func.js'></script>
@@ -29,5 +38,4 @@
         <?php include("includes/footer.php"); ?>
 
     </body>
-
 </html>

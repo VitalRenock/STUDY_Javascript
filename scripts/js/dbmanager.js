@@ -1,70 +1,85 @@
-    // RECUPERATION DES ELEMENTS DE LA PAGE WEB (INTERFACE)
-    let buttonSelect = document.getElementById('button_select');
-    let buttonInsertInto = document.getElementById('button_insertinto');
-    let buttonDelete = document.getElementById('button_delete');
-    let buttonFrom = document.getElementById('button_from');
-    let buttonAsterisk = document.getElementById('button_asterisk');
-    
-    let inputUser = document.getElementById('input_user');
-    let buttonAdd = document.getElementById('button_add');
-    
-    let buttonReset = document.getElementById('button_reset');
-    let buttonSend = document.getElementById('button_send');
-    
-    let displayTables = document.getElementById('display_tables');
-    let displayRequest = document.getElementById('display_request');
-    let displayResult = document.getElementById('display_result');
-    let displayRequestData = document.getElementById('display_request_data');
+//#region  PARAMETRES POUR REQUETES AJAX
 
-    // PARAMETRES POUR REQUETES AJAX
-    class RequestData {
-        constructor(urlRequest, writingRequest, typeRequest) {
-            this.urlRequest = urlRequest;
-            this.writingRequest = writingRequest;
-            this.typeRequest = typeRequest;
-        }
+class RequestData {
+    constructor(urlRequest, writingRequest, typeRequest) {
+        this.urlRequest = urlRequest;
+        this.writingRequest = writingRequest;
+        this.typeRequest = typeRequest;
     }
-    let currentRequestData = new RequestData('dbqueries/select_articles.php?request=', '', '');
+}
 
-    // ENREGISTREMENT AUX EVENTS
-    buttonSelect.addEventListener('click', function() { 
-        AddAtRequest(currentRequestData, 'SELECT'); 
-        ChangeRequestType(currentRequestData, 'SELECT'); 
-    });
-    buttonInsertInto.addEventListener('click', function() { 
-        AddAtRequest(currentRequestData, 'INSERT INTO'); 
-        ChangeRequestType(currentRequestData, 'INSERT INTO'); 
-    });
-    buttonDelete.addEventListener('click', function() { 
-        AddAtRequest(currentRequestData, 'DELETE'); 
-        ChangeRequestType(currentRequestData, 'DELETE'); 
-    });
-    buttonFrom.addEventListener('click', function() { 
-        AddAtRequest(currentRequestData, 'FROM'); 
-    });
-    buttonAsterisk.addEventListener('click', function() { 
-        AddAtRequest(currentRequestData, '*'); 
-    });
-    buttonAdd.addEventListener('click', function() { 
-        AddAtRequest(currentRequestData, ' ' + inputUser.value + ' '); 
-    });
-    buttonReset.addEventListener('click', function() { 
-        ResetRequest(currentRequestData); 
-    });
-    buttonSend.addEventListener('click', function() { 
-        SendRequest(currentRequestData.urlRequest, currentRequestData.writingRequest, currentRequestData.typeRequest);
-    });
-    
-    // RECUPERATION DES TABLES
+let currentRequestData = new RequestData('scripts/php/db_queries.php?request=', '', '');
+
+//#endregion
+
+//#region RECUPERATION DES ELEMENTS ET ENREGISTREMENT AUX EVENTS
+
+let inputUser = document.getElementById('input_user');
+
+let displayTables = document.getElementById('display_tables');
+let displayRequest = document.getElementById('display_request');
+let displayResult = document.getElementById('display_result');
+let displayRequestData = document.getElementById('display_request_data');
+
+let buttonSelect = document.getElementById('button_select');
+buttonSelect.addEventListener('click', function() { 
+    AddAtRequest(currentRequestData, 'SELECT'); 
+    ChangeRequestType(currentRequestData, 'SELECT'); 
+});
+
+let buttonInsertInto = document.getElementById('button_insertinto');
+buttonInsertInto.addEventListener('click', function() { 
+    AddAtRequest(currentRequestData, 'INSERT INTO'); 
+    ChangeRequestType(currentRequestData, 'INSERT INTO'); 
+});
+
+let buttonDelete = document.getElementById('button_delete');
+buttonDelete.addEventListener('click', function() { 
+    AddAtRequest(currentRequestData, 'DELETE'); 
+    ChangeRequestType(currentRequestData, 'DELETE'); 
+});
+
+let buttonFrom = document.getElementById('button_from');
+buttonFrom.addEventListener('click', function() { 
+    AddAtRequest(currentRequestData, 'FROM'); 
+});
+
+let buttonAsterisk = document.getElementById('button_asterisk');
+buttonAsterisk.addEventListener('click', function() { 
+    AddAtRequest(currentRequestData, '*'); 
+});
+
+let buttonAdd = document.getElementById('button_add');
+buttonAdd.addEventListener('click', function() { 
+    AddAtRequest(currentRequestData, ' ' + inputUser.value + ' '); 
+});
+
+let buttonReset = document.getElementById('button_reset');
+buttonReset.addEventListener('click', function() { 
+    ResetRequest(currentRequestData); 
+});
+
+let buttonSend = document.getElementById('button_send');
+buttonSend.addEventListener('click', function() { 
+    SendRequest(currentRequestData.urlRequest, currentRequestData.writingRequest, currentRequestData.typeRequest);
+});
+
+//#endregion    
+
+//#region LANCEMENT DES FONCTIONS
+
     ShowAllTables(currentRequestData);
     UpdateDisplayRequestData(currentRequestData);
+    
+//#endregion
 
-    // FONCTIONS
+//#region FONCTIONS
+
     function AddAtRequest(requestData ,partOfRequest) {
         requestData.writingRequest += " " + partOfRequest + " ";
         displayRequest.innerHTML = requestData.writingRequest;
     }
-
+    
     function ResetRequest(requestData) {
         requestData.writingRequest = '';
         requestData.typeRequest = '';
@@ -77,9 +92,9 @@
             case 'SHOW':
                 requestData.typeRequest = "show";
                 break;
-            case 'SELECT':
-                requestData.typeRequest = "select";
-                break;
+                case 'SELECT':
+                    requestData.typeRequest = "select";
+                    break;
             case 'INSERT INTO':
                 requestData.typeRequest = "insert";
                 break;
@@ -110,7 +125,6 @@
         switch (typeOfProcess) {
             case 'show':
                 result = JSON.parse(resultToProcess.responseText);         
-                console.log(result);
                 displayTables.innerHTML = ParseJSONtoHTMLTable(result);
                 break;
             case 'select':
@@ -162,3 +176,5 @@
         html += "</table>";
         return html;
     }
+
+//#endregion
