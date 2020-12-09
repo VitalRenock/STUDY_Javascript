@@ -16,23 +16,11 @@
 
         <?php include("includes/header.php"); ?>
         <?php include("includes/menu.php"); ?>
+
+        <article id="mon_article"></article>
         
-
-        <?php 
-            $sqlRequest = 'SELECT titre, article, code FROM articles';
-            $result = $myDatabase->query($sqlRequest);
-            echo DisplayArticleOfDB($result);
-        ?>
-
-        <article>
-            <h1>Affichage de la table</h1>
-            <?php
-                $sqlRequest = 'SELECT titre, article, code FROM articles';
-                $result = $myDatabase->query($sqlRequest);
-                echo DisplayTableOfDB($result); 
-            ?>
-        </article>
-
+        <script type="text/javascript" src='scripts/js/display_articles.js'></script>
+        
         <script type="text/javascript" src='scripts/js/custom_func.js'></script>
         
         <?php include("includes/footer.php"); ?>
