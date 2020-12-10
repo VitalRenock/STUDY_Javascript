@@ -1,17 +1,13 @@
 
-
-SendRequest();
-
 // Ici j'envoie une requête à db_queries.php et j'attends le réponse...
 // Quand j'obtient la réponse, je fais quelques chose...
-function SendRequest() {
+function SendRequest(table, columns) {
     
-    var table = 'Bienvenue';
-    var columns = 'Renock';
+    // Sécurité
     if (!table || !columns)
         return;
     
-    var chainage = 'table=' + table + '&pseudo=' + columns;
+    var chainage = 'table=' + table + '&columns=' + columns;
 
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("POST", 'scripts/php/db_queries.php', true);
@@ -21,89 +17,65 @@ function SendRequest() {
     httpRequest.onreadystatechange = ProcessResponse;
     
     function ProcessResponse() {
+
         if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
-            console.log(typeof httpRequest.response);
-            console.log(httpRequest.response);
-            // console.log(this.responseText);
-            ConvertResponse(httpRequest.response);
-
-
+            
+            let response = JSON.parse(httpRequest.response);    // Convert JSON to OBJECT
+            for (let i = 0; i < response.length; i++)           // Pour chaque OBJECT de la response...
+                PostArticle(response[i]);
         }
+
     }
-}
-
-function ConvertResponse(response) {
-
-    document.getElementById('mon_article').innerHTML = ParseJSONtoHTMLTable(response);
 
 }
 
+function PostArticle(objectToPost) {
 
-// function SendRequest() {
-    
-//     var myParams1 = 'Bienvenue';
-//     var myParams2 = 'Renock';
-//     if (!myParams1 || !myParams2)
-//         return;
-    
-//     var chainage = 'message=' + myParams1 + '&pseudo=' + myParams2;
+    let main = document.querySelector('main');                          // On récupere la balise main
+    let newArticle = document.createElement('article');
 
-//     var httpRequest = new XMLHttpRequest();
-//     httpRequest.open("POST", 'scripts/php/db_queries.php', true);
-//     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//     httpRequest.send(chainage);
-//     // httpRequest.response = 'json';
-//     httpRequest.onreadystatechange = ProcessResponse;
-    
-//     function ProcessResponse() {
-//         if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
-//             console.log(typeof httpRequest.response);
-//             console.log(httpRequest.response);
-//             // console.log(this.responseText);
-//         }
-//     }
-// }
+    for (let property in objectToPost) {
 
-
-// function SendRequest() {
-//     var httpRequest = new XMLHttpRequest();
-
-//     httpRequest.onreadystatechange = function() {
-//         if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-//             console.log(typeof this.response);
-//             console.log(this.response);
-//             // console.log(this.responseText);
-//         }
-//     };
-
-//     httpRequest.open('GET', 'scripts/php/db_queries.php', true);
-//     // httpRequest.response = 'json';
-//     httpRequest.send();
-    
-// }
-
-
-
-function ParseJSONtoHTMLTable(result) {
-    let html = "<table>";
-    for (let i = 0; i < result.length; i++) {
-        html += "<tr>";        
-        for (const property in result[i]) {
-            if (result[i].hasOwnProperty(property)) {
-                const currentProperty = result[i][property];
-                html += "<td>" + currentProperty + "</td>";
-            }
+        switch (property) {
+            
+            case 'titre':
+                let titleArticle = document.createElement('h1');
+                titleArticle.textContent = objectToPost[property];
+                newArticle.appendChild(titleArticle);
+                break;
+        
+            case 'code':
+                let preContainer = document.createElement('pre');
+                newArticle.appendChild(preContainer);
+                let codeContainer = document.createElement('code');
+                // codeContainer.className = "html";
+                codeContainer.textContent = objectToPost[property];
+                preContainer.appendChild(codeContainer);
+                break;
+        
+            default:
+                let contentArticle = document.createElement('p');
+                contentArticle.textContent = objectToPost[property];
+                newArticle.appendChild(contentArticle);
+                break;
         }
-        html += "</tr>";
+
     }
-    html += "</table>";
-    return html;
+    console.log(newArticle);
+    main.appendChild(newArticle);
+
 }
 
-function DisplayArticles() {
-    // Je dois envoyer une requête à db_queries.php
+function ConvertSTRINGtoHTML(htmlString) {
+    var convertedString1 = htmlString.replace(/</g, "&lt;");
+    var convertedString2 = convertedString1.replace(/>/g, "&gt;");
+    return convertedString2;
+}
 
-    // Il me retourne toute sorte de résultat
+function DebugHttpRequest(httpRequest) {
 
-    // Je les traite de plein de facons
+    console.log(typeof httpRequest.response);
+    console.log(httpRequest.response);
+    console.log(httpRequest.responseText);
+
 }

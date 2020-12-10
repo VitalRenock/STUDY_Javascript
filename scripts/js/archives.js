@@ -150,3 +150,23 @@
 //         var variableRecuperee = cookies[MonCookie];
 
 //#endregion
+
+//#region ParseJSONtoHTMLTable
+
+// function ParseJSONtoHTMLTable(result) {
+//     let html = "<table>";
+//     for (let i = 0; i < result.length; i++) {
+//         html += "<tr>";        
+//         for (const property in result[i]) {
+//             if (result[i].hasOwnProperty(property)) {
+//                 const currentProperty = result[i][property];
+//                 html += "<td>" + currentProperty + "</td>";
+//             }
+//         }
+//         html += "</tr>";
+//     }
+//     html += "</table>";
+//     return html;
+// }
+
+//#endregion
