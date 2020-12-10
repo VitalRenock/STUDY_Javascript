@@ -11,15 +11,12 @@
 
     <body>
 
-        <?php include("scripts/php/connect_db.php"); ?>
-        <?php include("scripts/php/custom_func.php"); ?>
-
         <?php include("includes/header.php"); ?>
         <?php include("includes/menu.php"); ?>
 
+        <main>
 
-
-        <script type="text/javascript" src='scripts/js/custom_func.js'></script>
+        </main>
         
         <?php include("includes/footer.php"); ?>
 

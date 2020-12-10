@@ -11,11 +11,13 @@
 
     <body>
 
-        <?php include("scripts/php/connect_db.php"); ?>
-        <?php include("scripts/php/custom_func.php"); ?>
-
         <?php include("includes/header.php"); ?>
         <?php include("includes/menu.php"); ?>
+
+        <article>
+            <h1>PhpMyAdmin</h1>
+            <a href="/phpmyadmin">PhpMyAdmin</a>
+        </article>
 
         <article id="display_tables"></article>
 
@@ -47,11 +49,8 @@
         <!-- Affichage du résultat -->
         <article id="display_result"></article>
         
-        <script type="text/javascript" src="scripts/js/dbmanager.js"></script>
-
-        <script type="text/javascript" src='scripts/js/custom_func.js'></script>
-        
         <?php include("includes/footer.php"); ?>
 
     </body>
+    
 </html>

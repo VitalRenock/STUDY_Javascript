@@ -12,13 +12,7 @@
                 <a href="apprendre.php">Apprendre</a>
             </li>
             <li>
-                <a href="dbmanager.php">DB Manager</a>
-            </li>
-            <li>
-                <a href="page_test.php">Page de test</a>
-            </li>
-            <li>
-                <a href="/phpmyadmin">PhpMyAdmin</a>
+                <a href="dbmanager.php">Administration</a>
             </li>
         </ul>
     </nav>
