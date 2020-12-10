@@ -1,4 +1,4 @@
-function PostArticle(objectToPost) {
+export function PostArticle(objectToPost) {
 
     let main = document.querySelector('main');                          // On récupere la balise main
     let newArticle = document.createElement('article');

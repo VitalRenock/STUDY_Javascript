@@ -1,4 +1,4 @@
-function SendRequest(table, columns) {
+export function SendRequest(table, columns, callback) {
     // Ici j'envoie une requête à db_queries.php et j'attends le réponse...
     // Quand j'obtient la réponse, je fais quelques chose...
 
@@ -9,7 +9,7 @@ function SendRequest(table, columns) {
     var chainage = 'table=' + table + '&columns=' + columns;
 
     var httpRequest = new XMLHttpRequest();
-    httpRequest.open("POST", 'scripts/php/db_queries.php', true);
+    httpRequest.open("POST", 'scripts/php/database_requester.php', true);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send(chainage);
     // httpRequest.response = 'json';
@@ -21,14 +21,14 @@ function SendRequest(table, columns) {
             
             let response = JSON.parse(httpRequest.response);    // Convert JSON to OBJECT
             for (let i = 0; i < response.length; i++)           // Pour chaque OBJECT de la response...
-                PostArticle(response[i]);
+                callback(response[i]);
         }
 
     }
 
 }
 
-function DebugHttpRequest(httpRequest) {
+export function DebugHttpRequest(httpRequest) {
 
     console.log(typeof httpRequest.response);
     console.log(httpRequest.response);

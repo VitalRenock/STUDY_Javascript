@@ -18,9 +18,8 @@
 
         </main>
 
-        <script type="text/javascript" src='scripts/js/display_articles.js'></script>
+        <script type="module" src='scripts/js/main/articles.js'></script>
         <script>
-            SendRequest('articles', 'titre, article, code');
             // hljs.initHighlighting();
             window.setTimeout(hljs.initHighlighting, 100);
         </script>

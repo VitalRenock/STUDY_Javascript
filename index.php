@@ -18,6 +18,8 @@
 
         </main>
         
+        <script type="module" src='scripts/js/main/articles.js'></script>
+
         <?php include("includes/footer.php"); ?>
 
     </body>

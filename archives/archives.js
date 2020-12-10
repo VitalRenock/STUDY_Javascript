@@ -715,3 +715,22 @@ class RequestData {
 let currentRequestData = new RequestData('scripts/php/db_queries.php?request=', '', '');
 
 //#endregion
+
+//#region Exemple de CALLBACK
+
+    // function salutation(name) {
+    //     alert('Bonjour ' + name);
+    // }
+  
+    // function processUserInput(callback) {
+    //     var name = prompt('Entrez votre nom.');
+    //     callback(name);
+    // }
+  
+    // processUserInput(salutation);
+
+//#endregion
+
+//#region 
+
+//#endregion

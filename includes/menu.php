@@ -12,7 +12,7 @@
                 <a href="apprendre.php">Apprendre</a>
             </li>
             <li>
-                <a href="dbmanager.php">Administration</a>
+                <a href="administration.php">Administration</a>
             </li>
         </ul>
     </nav>

@@ -1,9 +1,8 @@
 <?php
 
+$myDatabase = ConnectPDOtoDB();
 RequestByPOST($myDatabase);
 
-// TO DO: Placer des Try, Catch
-$myDatabase = ConnectPDOtoDB();
 
 function ConnectSQLItoDB() {
 
