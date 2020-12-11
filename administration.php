@@ -21,38 +21,30 @@
                 <a href="/phpmyadmin">PhpMyAdmin</a>
             </article>
 
-            <article id="display_tables"></article>
-
-            <!-- Interface -->
             <article>
-                <p class="myParaf1">
-                    <button name="button_select" type="button" id="button_select">SELECT</button>
-                    <button name="button_insert_into" type="button" id="button_insertinto">INSERT INTO</button>
-                    <button name="button_delete" type="button" id="button_delete">DELETE</button>
-                    <button name="button_from" type="button" id="button_from">FROM</button>
-                    <button name="button_asterisk" type="button" id="button_asterisk">*</button>
-                </p>
-                <p class="myParaf1">
-                    <input  name="input_user" type="text" id="input_user">
-                    <button name="button_add" type="button" id="button_add">Add</button>
-                </p>
-                <p class="myParaf1">
-                    <strong>Requête en préparation:</strong>
-                    <br>
-                    <strong id="display_request"></strong>
-                    <br>
-                    <button name="button_reset" type="button" id="button_reset">Reset</button>
-                    <button name="button_send" type="button" id="button_send">Send</button>
-                </p>
-                <p class="myParaf1" id="display_request_data"></p>
+                <label for="input_title">Titre: </label>
+                <br>
+                <input  name="input_title" type="text" id="input_title">
+                <br>
+                <label for="input_content">Description: </label>
+                <br>
+                <textarea name="input_content" id="input_content" cols="30" rows="10"></textarea>
+                <br>
+                <label for="inupt_code">Exemple de code: </label>
+                <br>
+                <textarea name="input_code" id="input_code" cols="30" rows="10"></textarea>
+                <br>
+                <label for="input_categorie">Catégorie: </label>
+                <br>
+                <input  name="input_categorie" type="text" id="input_categorie">
+                <br>
+                <input  name="button_send" type="button" id="button_send" value="Envoyer">
 
             </article>
 
-            <!-- Affichage du résultat -->
-            <article id="display_result"></article>
-
         </main>
 
+        <script type="module" src="scripts/js/main/administration.js"></script>
         
         <?php include("includes/footer.php"); ?>
 

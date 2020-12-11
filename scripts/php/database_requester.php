@@ -1,7 +1,9 @@
 <?php
 
-$myDatabase = ConnectPDOtoDB();
-RequestByPOST($myDatabase);
+// $myDatabase = ConnectPDOtoDB();
+// SelectByPOST($myDatabase);
+
+RequestDatabase();
 
 
 function ConnectSQLItoDB() {
@@ -36,8 +38,44 @@ function ConnectPDOtoDB() {
 
 }
 
-function RequestByPOST($myDatabase) {
+function RequestDatabase() {
 
+    switch ($_POST['type']) {
+
+        case 'select':
+            SelectByPOST();
+            break;
+
+        case 'insert':
+            InsertByPOST();
+            break;
+        
+        default:
+            echo "Mauvaise requete recue";
+            break;
+    }
+
+}
+
+function InsertByPOST() {
+
+    $myDatabase = ConnectPDOtoDB();
+
+    // !!! Poser une secu contre les injections (prepare, ect...)
+    $sql = "INSERT INTO ".$_POST['table']."(".$_POST['columns'].") VALUES(?, ?)";
+    // $sql = "INSERT INTO ? (?) VALUES(?, ?)";
+    $response = $myDatabase->prepare($sql);
+    $response->execute(array($_POST['titre'], $_POST['content']));
+
+
+    $response->closeCursor();
+    
+}
+function SelectByPOST() {
+
+    $myDatabase = ConnectPDOtoDB();
+
+    // !!! Poser une secu contre les injections (prepare, ect...)
     $sql = "SELECT ".$_POST['columns']." FROM ".$_POST['table'];
     $response = $myDatabase->query($sql);
 

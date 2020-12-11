@@ -1,12 +1,51 @@
-export function SendRequest(table, columns, callback) {
-    // Ici j'envoie une requête à db_queries.php et j'attends le réponse...
-    // Quand j'obtient la réponse, je fais quelques chose...
+export function RequestData(requestType, targetTable, targetColumns) {
+
+        this.requestType = requestType;
+        this.targetTable = targetTable;
+        this.targetColumns = targetColumns;
+
+        this.Chainage = function() {
+            let chaine = 'type=' + this.requestType;
+            chaine += '&table=' + this.targetTable;
+            chaine += '&columns=' + this.targetColumns;
+            // chaine += '&values=' + valuesToSend;
+            return chaine;
+        };
+
+}
+
+export function SendRequest(requestData, callback) {
 
     // Sécurité
-    if (!table || !columns)
+    if (!requestData.requestType || !requestData.targetTable || !requestData.targetColumns) {
+        console.log("SendRequest() => RequestData incomplet.");
         return;
+    }
+    else if (!callback) {
+        console.log("SendRequest() => Pas de callback fournis.");
+        return;
+    }
     
-    var chainage = 'table=' + table + '&columns=' + columns;
+    
+    let chainage;
+    
+    switch (requestData.requestType) {
+        case 'select':
+            chainage = requestData.Chainage();
+            break;
+    
+        case 'insert':
+            chainage = requestData.Chainage();
+            chainage += '&titre=' + requestData.titre;
+            chainage += '&content=' + requestData.content;
+            break;
+    
+        default:
+            break;
+    }
+
+    console.log(chainage);
+    
 
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("POST", 'scripts/php/database_requester.php', true);
@@ -19,9 +58,16 @@ export function SendRequest(table, columns, callback) {
 
         if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
             
-            let response = JSON.parse(httpRequest.response);    // Convert JSON to OBJECT
-            for (let i = 0; i < response.length; i++)           // Pour chaque OBJECT de la response...
-                callback(response[i]);
+            if (requestData.requestType == 'select') {
+
+                let response = JSON.parse(httpRequest.response);    // Convert JSON to OBJECT
+                for (let i = 0; i < response.length; i++)           // Pour chaque OBJECT de la response...
+                    callback(response[i]);
+            }
+            else {
+                console.log("Type de requête " + requestData.requestType + ", rien n'est à faire.");
+            }
+
         }
 
     }

@@ -704,15 +704,15 @@
 
 //#region  CLASSE PARAMETRES POUR REQUETES AJAX
 
-class RequestData {
-    constructor(urlRequest, writingRequest, typeRequest) {
-        this.urlRequest = urlRequest;
-        this.writingRequest = writingRequest;
-        this.typeRequest = typeRequest;
-    }
-}
+    // class RequestData {
+    //     constructor(urlRequest, writingRequest, typeRequest) {
+    //         this.urlRequest = urlRequest;
+    //         this.writingRequest = writingRequest;
+    //         this.typeRequest = typeRequest;
+    //     }
+    // }
 
-let currentRequestData = new RequestData('scripts/php/db_queries.php?request=', '', '');
+    // let currentRequestData = new RequestData('scripts/php/db_queries.php?request=', '', '');
 
 //#endregion
 
@@ -728,6 +728,17 @@ let currentRequestData = new RequestData('scripts/php/db_queries.php?request=', 
     // }
   
     // processUserInput(salutation);
+
+//#endregion
+
+//#region Il existe trois types de déclarations de variable en JavaScript.
+
+    // var
+    //     On déclare une variable, éventuellement en initialisant sa valeur.
+    // let
+    //     On déclare une variable dont la portée est celle du bloc courant, éventuellement en initialisant sa valeur.
+    // const
+    //     On déclare une constante nommée, dont la portée est celle du bloc courant, accessible en lecture seule. 
 
 //#endregion
 

@@ -18,7 +18,7 @@
 
         </main>
         
-        <script type="module" src='scripts/js/main/articles.js'></script>
+        <script type="module" src='scripts/js/main/index.js'></script>
 
         <?php include("includes/footer.php"); ?>
 

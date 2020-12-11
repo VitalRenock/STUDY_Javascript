@@ -1,4 +1,5 @@
-import { SendRequest } from "../database_manager.js";
+import { RequestData, SendRequest } from "../database_manager.js";
 import { PostArticle } from "../content_manager.js";
 
-SendRequest("articles", "titre, article, code", PostArticle);
+let requestData = new RequestData('select', 'articles', "titre, article, code, categorie");
+SendRequest(requestData, PostArticle);

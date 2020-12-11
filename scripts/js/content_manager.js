@@ -3,34 +3,47 @@ export function PostArticle(objectToPost) {
     let main = document.querySelector('main');                          // On récupere la balise main
     let newArticle = document.createElement('article');
 
+    let index = 0;
     for (let property in objectToPost) {
 
-        switch (property) {
+        if (index == 0) {
+
+            let titleArticle = document.createElement('h1');
+            titleArticle.textContent = objectToPost[property];
+            newArticle.appendChild(titleArticle);
+
+        }
+        else {
+            switch (property) {
+        
+                case 'code':
+                    let preContainer = document.createElement('pre');
+                    newArticle.appendChild(preContainer);
+                    let codeContainer = document.createElement('code');
+                    // codeContainer.className = "html";
+                    codeContainer.textContent = objectToPost[property];
+                    preContainer.appendChild(codeContainer);
+                    break;
             
-            case 'titre':
-                let titleArticle = document.createElement('h1');
-                titleArticle.textContent = objectToPost[property];
-                newArticle.appendChild(titleArticle);
-                break;
-        
-            case 'code':
-                let preContainer = document.createElement('pre');
-                newArticle.appendChild(preContainer);
-                let codeContainer = document.createElement('code');
-                // codeContainer.className = "html";
-                codeContainer.textContent = objectToPost[property];
-                preContainer.appendChild(codeContainer);
-                break;
-        
-            default:
-                let contentArticle = document.createElement('p');
-                contentArticle.textContent = objectToPost[property];
-                newArticle.appendChild(contentArticle);
-                break;
+                default:
+                    let subTitle = document.createElement('h4');
+                    subTitle.textContent = property;
+                    let contentText = document.createElement('p');
+                    contentText.textContent = objectToPost[property];
+                    let contentArticle = document.createElement('section');
+                    contentArticle.appendChild(subTitle);
+                    contentArticle.appendChild(contentText);
+                    newArticle.appendChild(contentArticle);
+                    break;
+                    
+            }
         }
 
+        index++;
+
     }
-    console.log(newArticle);
+
+    // console.log(newArticle);
     main.appendChild(newArticle);
 
 }
