@@ -742,6 +742,70 @@
 
 //#endregion
 
+//#region ECMAScript 2015
+
+    // Déclarer des variables avec 'let' et 'const'.
+
+    // Les pointeurs (=>):
+        // let pointeurExempleTable = ["Renaud,", "Xavier", "Nadine", "Angelo"].forEach((exemple1, exemple2) => {
+        //     exemple2 = exemple2 * 2;
+        //     console.log(exemple1 + " / " + exemple2);
+        // });
+
+    // Nouvelle écriture pour les fonctions dans une classe:
+        // class Renock {
+        //     constructor() {
+        //         this.nom = "Renaud";
+        //     }
+        //     MaFunction() {
+        //         console.log(this.nom);
+        //     }
+        // }
+        // ren = new Renock();
+        // ren.MaFunction();
+
+    // Les Spreads ... (syntaxe de décomposition)
+
+        // La syntaxe de décomposition permet d'étendre un itérable (par exemple une expression de tableau ou une chaîne de caractères) en lieu et place de plusieurs arguments (pour les appels de fonctions) ou de plusieurs éléments (pour les littéraux de tableaux) ou de paires clés-valeurs (pour les littéraux d'objets).
+        // function sum(x, y, z) {
+        //     return x + y + z;
+        // }
+        // const numbers = [1, 2, 3];
+        // console.log(sum(...numbers));               // expected output: 6
+        // console.log(sum.apply(null, numbers));      // expected output: 6
+
+    // Nouvel quote pour écrire du texte sur plusieurs lignes (alt Gr + µ)
+        // let texte = `Essai
+        //     de texte
+        //     multiligne!`
+
+    // Héritage de classe
+
+        // class Parent {
+        //     constructor(nom) {
+        //         this.nom = "Mr " + nom;
+        //     }
+        // }
+        // class Enfant extends Parent {
+        //     constructor(nom) {
+        //         super(nom)
+        //     }
+        // }
+
+    // Interpolé une variable:
+
+        // let texte = "abcdefgh";
+        // console.log('Alphabet:${texte}');
+
+    // Les 'imports' et 'export'.
+
+    // Les promesses.
+
+//#endregion
+
 //#region 
 
 //#endregion
+
+
+  

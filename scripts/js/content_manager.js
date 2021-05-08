@@ -1,3 +1,19 @@
+//#region Public
+
+export function PostDataTable(tableOfObjects) {
+
+    let main = document.querySelector('main');                          // On récupere la balise main
+    let newArticle = document.createElement('article');
+    newArticle.appendChild(CreateDataTableBlock(tableOfObjects));
+    main.appendChild(newArticle);
+}
+
+export function PostArticles(tableOfObjects) {
+
+    for (let i = 0; i < tableOfObjects.length; i++)
+        PostArticle(tableOfObjects[i]);
+}
+
 export function PostArticle(objectToPost) {
 
     let main = document.querySelector('main');                          // On récupere la balise main
@@ -7,80 +23,95 @@ export function PostArticle(objectToPost) {
     for (let property in objectToPost) {
 
         if (index == 0) {
-
             let titleArticle = document.createElement('h1');
             titleArticle.textContent = objectToPost[property];
             newArticle.appendChild(titleArticle);
-
         }
         else {
             switch (property) {
         
                 case 'code':
-                    let preContainer = document.createElement('pre');
-                    newArticle.appendChild(preContainer);
-                    let codeContainer = document.createElement('code');
-                    // codeContainer.className = "html";
-                    codeContainer.textContent = objectToPost[property];
-                    preContainer.appendChild(codeContainer);
+                    newArticle.appendChild(CreateHighlightBlock(property, objectToPost[property]));
                     break;
             
                 default:
-                    let subTitle = document.createElement('h4');
-                    subTitle.textContent = property;
-                    let contentText = document.createElement('p');
-                    contentText.textContent = objectToPost[property];
-                    let contentArticle = document.createElement('section');
-                    contentArticle.appendChild(subTitle);
-                    contentArticle.appendChild(contentText);
-                    newArticle.appendChild(contentArticle);
+                    newArticle.appendChild(CreateSectionBlock(property, objectToPost[property]));
                     break;
-                    
             }
         }
-
         index++;
-
     }
-
     // console.log(newArticle);
     main.appendChild(newArticle);
-
 }
 
-//#region DEPRECATED!!!
+//#endregion
 
-    function ProcessResultRequest(resultToProcess, typeOfProcess) {
-        let result;
-        switch (typeOfProcess) {
-            case 'show':
-                result = JSON.parse(resultToProcess.responseText);         
-                displayTables.innerHTML = ParseJSONtoHTMLTable(result);
-                break;
-            case 'select':
-                result = JSON.parse(resultToProcess.responseText);         
-                displayResult.innerHTML = ParseJSONtoHTMLTable(result);
-                break;
-            case 'insert':
-                console.log("Rien à faire avec INSERT INTO");
-                break;
-            case 'delete':
-                console.log("Rien à faire avec DELETE");
-                break;
-            default:
-                console.log('ProcessResultRequest() => switch')
-                break;
+//#region Private
+
+function CreateDataTableBlock(tableOfObjects) {
+
+    let newTableBlock = document.createElement('table');
+    for (let row = 0; row < tableOfObjects.length; row++) {
+        const currentRow = tableOfObjects[row];
+        
+        let newTrBlock = document.createElement('tr');
+        for (const cell in currentRow) {
+            if (Object.hasOwnProperty.call(currentRow, cell)) {
+                const currentCell = currentRow[cell];
+
+                let newTdBlock = document.createElement('td');
+                newTdBlock.textContent = currentCell;
+                newTrBlock.appendChild(newTdBlock);
+            }
         }
-
-        // TO REMOVE
-        ResetRequest(currentRequestData);
+        newTableBlock.appendChild(newTrBlock);
     }
+    return newTableBlock;
+}
 
-    function UpdateDisplayRequestData(requestData) {
-        displayRequestData.innerHTML = 
-            '<h4>Request Data:</h4>'
-            + 'Url:' + requestData.urlRequest + '<br>'
-            + 'Type:' + requestData.typeRequest;
-    }
+function CreateSubTitleBlock(value) {
+
+    let newSubTitleBlock = document.createElement('h4');
+    newSubTitleBlock.textContent = value;
+    return newSubTitleBlock;
+}
+
+function CreateParagraphBlock(value) {
+
+    let newParagraphBlock = document.createElement('p');
+    newParagraphBlock.textContent = value;
+    return newParagraphBlock;
+}
+
+function CreateSectionBlock(property, value) {
+
+    let newSectionBlock = document.createElement('section');
+    newSectionBlock.appendChild(CreateSubTitleBlock(property));
+    newSectionBlock.appendChild(CreateParagraphBlock(value));
+    return newSectionBlock;
+}
+
+function CreatePreBlock() {
+    let newPreContainer = document.createElement('pre');
+    return newPreContainer;
+}
+
+function CreateCodeBlock(value) {
+    let newCodeBlock = document.createElement('code');
+    // newCodeBlock.className = "html";                 // Forcer Highlight.js à intepreter dans un langage en particulier.
+    newCodeBlock.textContent = value;
+    return newCodeBlock;
+}
+
+function CreateHighlightBlock(property, value) {
+
+    let newHighlightBlock = document.createElement('section');
+    newHighlightBlock.appendChild(CreateSubTitleBlock(property));
+    let newPreBlock = CreatePreBlock();
+    newPreBlock.appendChild(CreateCodeBlock(value));
+    newHighlightBlock.appendChild(newPreBlock);
+    return newHighlightBlock;
+}
 
 //#endregion

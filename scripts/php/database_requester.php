@@ -3,7 +3,8 @@
 // $myDatabase = ConnectPDOtoDB();
 // SelectByPOST($myDatabase);
 
-RequestDatabase();
+// RequestDatabase();
+RequestReader();
 
 
 function ConnectSQLItoDB() {
@@ -50,6 +51,10 @@ function RequestDatabase() {
             InsertByPOST();
             break;
         
+        case 'show':
+            ShowAllTables();
+            break;
+        
         default:
             echo "Mauvaise requete recue";
             break;
@@ -65,7 +70,7 @@ function InsertByPOST() {
     $sql = "INSERT INTO ".$_POST['table']."(".$_POST['columns'].") VALUES(?, ?)";
     // $sql = "INSERT INTO ? (?) VALUES(?, ?)";
     $response = $myDatabase->prepare($sql);
-    $response->execute(array($_POST['titre'], $_POST['content']));
+    $response->execute(array($_POST['title'], $_POST['content']));
 
 
     $response->closeCursor();
@@ -87,6 +92,42 @@ function SelectByPOST() {
 function ReturnPOSTValues() {
 
     echo $_POST['message'] . ' - ' . $_POST['pseudo'];
+
+}
+
+function ShowAllTables() {
+
+    $myDatabase = ConnectPDOtoDB();
+
+    $sql = "SHOW TABLES";
+    $response = $myDatabase->query($sql);
+    echo json_encode($response->fetchAll(PDO::FETCH_ASSOC));
+    $response->closeCursor();
+}
+
+function RequestReader() {
+    // $myDatabase = ConnectPDOtoDB();
+
+    var_dump($_POST);
+    // echo json_encode($_POST['type']);
+
+    // foreach ($_POST as $key => $value) {
+    //     echo $value;
+    // }
+
+    // $request = json_decode();
+
+    // if ($request['type'] == "select")
+    //     echo 'CESTBON';
+
+    // $sql = "SHOW TABLES";
+    // $response = $myDatabase->query($sql);
+
+
+
+    // echo json_encode($response->fetchAll(PDO::FETCH_ASSOC));
+
+    // $response->closeCursor();    
 
 }
 

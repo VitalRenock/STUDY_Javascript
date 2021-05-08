@@ -1,51 +1,128 @@
-export function RequestData(requestType, targetTable, targetColumns) {
+export function RequestBase(requestType) {
 
         this.requestType = requestType;
-        this.targetTable = targetTable;
-        this.targetColumns = targetColumns;
 
         this.Chainage = function() {
             let chaine = 'type=' + this.requestType;
-            chaine += '&table=' + this.targetTable;
-            chaine += '&columns=' + this.targetColumns;
-            // chaine += '&values=' + valuesToSend;
             return chaine;
         };
-
 }
 
-export function SendRequest(requestData, callback) {
+export function RequestSelect(requestType, targetTable, targetColumns) {
+
+    RequestBase.call(this, requestType);
+
+    this.targetTable = targetTable;
+    this.targetColumns = targetColumns;
+
+    this.Chainage = function() {
+        let chaine = 'type=' + this.requestType;
+        chaine += '&table=' + this.targetTable;
+        chaine += '&columns=' + this.targetColumns;
+        return chaine;
+    };
+}
+
+export function RequestInsert(requestType, targetTable, targetColumns, title, content) {
+    
+    RequestSelect.call(this, requestType, targetTable, targetColumns);
+
+    this.title = title;
+    this.content = content;
+
+    this.Chainage = function() {
+        let chaine = 'type=' + this.requestType;
+        chaine += '&table=' + this.targetTable;
+        chaine += '&columns=' + this.targetColumns;
+        chaine += '&title=' + this.title;
+        chaine += '&content=' + this.content;
+        return chaine;
+    };
+}
+
+export function PrepareRequest(requestData) {
+
+        // Sécurité
+        if (!requestData.requestType) {
+            console.log("PrepareRequest() => Aucun type de requête sélectionné.");
+            return;
+        }
+    
+        let chainage;
+    
+        switch (requestData.requestType) {
+            case 'show':
+                if (!ShowRequest(requestData))
+                    return;
+                break;
+                
+            case 'select':
+                if (!SelectRequest(requestData))
+                    return;
+                break;
+        
+            case 'insert':
+                if (!InsertRequest(requestData))
+                    return;
+                break;
+        
+            case 'delete':
+                if (!DeleteRequest(requestData))
+                    return;
+                break;
+        
+            default:
+                console.log("PrepareRequest() => Mauvais type de requête.");
+                break;
+        }
+    
+        function ShowRequest(requestData) {
+    
+            chainage = requestData.Chainage();
+            return true;
+        }
+    
+        function SelectRequest(requestData) {
+    
+            if (!requestData.targetTable || !requestData.targetColumns) {
+                console.log("SelectRequest() => Aucune valeurs pour 'titre' et/ou 'content'.");
+                return false;
+            }
+    
+            chainage = requestData.Chainage();
+            return true;
+        }
+    
+        function InsertRequest(requestData) {
+    
+            if (!requestData.targetTable || !requestData.targetColumns) {
+                console.log("InsertRequest() => Aucune valeurs pour 'table' et/ou 'columns'.");
+                return false;
+            }
+            else if (!requestData.title || !requestData.content) {
+                console.log("InsertRequest() => Aucune valeurs pour 'titre' et/ou 'content'.");
+                return false;
+            }
+    
+            chainage = requestData.Chainage();
+            return true;
+        }
+    
+        function DeleteRequest(requestData) {
+            return false;
+        }
+
+        console.log(chainage);
+        return chainage;
+}
+
+export function SendRequest(requestData, chainage, callback) {
 
     // Sécurité
-    if (!requestData.requestType || !requestData.targetTable || !requestData.targetColumns) {
-        console.log("SendRequest() => RequestData incomplet.");
+    if (!requestData || !chainage || !callback) {
+        console.log("SendRequest() => Paramètres d'entrée manquants.");
         return;
     }
-    else if (!callback) {
-        console.log("SendRequest() => Pas de callback fournis.");
-        return;
-    }
-    
-    
-    let chainage;
-    
-    switch (requestData.requestType) {
-        case 'select':
-            chainage = requestData.Chainage();
-            break;
-    
-        case 'insert':
-            chainage = requestData.Chainage();
-            chainage += '&titre=' + requestData.titre;
-            chainage += '&content=' + requestData.content;
-            break;
-    
-        default:
-            break;
-    }
-
-    console.log(chainage);
-    
 
     var httpRequest = new XMLHttpRequest();
     httpRequest.open("POST", 'scripts/php/database_requester.php', true);
@@ -57,21 +134,12 @@ export function SendRequest(requestData, callback) {
     function ProcessResponse() {
 
         if (httpRequest.readyState == XMLHttpRequest.DONE && httpRequest.status == 200) {
-            
-            if (requestData.requestType == 'select') {
-
-                let response = JSON.parse(httpRequest.response);    // Convert JSON to OBJECT
-                for (let i = 0; i < response.length; i++)           // Pour chaque OBJECT de la response...
-                    callback(response[i]);
-            }
-            else {
-                console.log("Type de requête " + requestData.requestType + ", rien n'est à faire.");
-            }
-
+            if (requestData.requestType == 'show' || requestData.requestType == 'select')
+                    callback(JSON.parse(httpRequest.response));     // Convert JSON to OBJECT
+            else
+                console.log("SendRequest() => Type de requête " + requestData.requestType + ", rien n'est à faire.");
         }
-
     }
-
 }
 
 export function DebugHttpRequest(httpRequest) {
@@ -81,57 +149,3 @@ export function DebugHttpRequest(httpRequest) {
     console.log(httpRequest.responseText);
 
 }
-
-//#region DEPECRATED!!!
-
-    function AddAtRequest(requestData ,partOfRequest) {
-        requestData.writingRequest += " " + partOfRequest + " ";
-        displayRequest.innerHTML = requestData.writingRequest;
-    }
-    
-    function ResetRequest(requestData) {
-        requestData.writingRequest = '';
-        requestData.typeRequest = '';
-        displayRequest.innerHTML = requestData.writingRequest;
-        UpdateDisplayRequestData(requestData);
-    }
-    
-    function ChangeRequestType(requestData, typeSelected) {
-        switch (typeSelected) {
-            case 'SHOW':
-                requestData.typeRequest = "show";
-                break;
-                case 'SELECT':
-                    requestData.typeRequest = "select";
-                    break;
-            case 'INSERT INTO':
-                requestData.typeRequest = "insert";
-                break;
-            case 'DELETE':
-                requestData.typeRequest = "delete";
-                break;
-            default:
-                console.log('ChangeRequestType() => switch')
-                break;
-        }
-        UpdateDisplayRequestData(requestData);
-    }
-
-    // function SendRequest(urlToRequest, requestToSend, typeToRequest) {
-    //     var httpRequest = new XMLHttpRequest();
-    //     httpRequest.onreadystatechange = function() {
-    //         if (this.readyState == XMLHttpRequest.DONE && this.status == 200)
-    //             ProcessResultRequest(this, typeToRequest);
-    //     };
-    //     // console.log("URL envoyée: " + urlToRequest + requestToSend + "&type=" + typeToRequest);
-    //     httpRequest.open('GET', urlToRequest + requestToSend + "&type=" + typeToRequest, true);
-    //     httpRequest.response = 'json';
-    //     httpRequest.send();
-    // }
-
-    function ShowAllTables(requestData) {
-        ChangeRequestType(requestData, 'SHOW');
-        SendRequest(requestData.urlRequest, 'SHOW TABLES', requestData.typeRequest);
-    }
-
-//#endregion
